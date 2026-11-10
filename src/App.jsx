@@ -64,6 +64,12 @@ export default function App() {
     }
   }, [theme]);
 
+  // Show how many tasks are left in the browser tab.
+  useEffect(() => {
+    const left = countLeft(todos);
+    document.title = left > 0 ? `(${left}) Simple To-Do` : "Simple To-Do";
+  }, [todos]);
+
   function handleSubmit(event) {
     event.preventDefault();
     setTodos(addTodo(todos, text));
